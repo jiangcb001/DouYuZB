@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CSP-13-bN2">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Vd5-Ej-M9B">
+            <objects>
+                <viewController id="5xg-hx-ZGw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="egJ-ws-8fr"/>
+                        <viewControllerLayoutGuide type="bottom" id="i1f-oH-yfH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nwO-4M-lOn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="inb-9h-Sms"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqw-wN-CWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="-86"/>
+        </scene>
+        <!--关注-->
+        <scene sceneID="HnY-5m-E6o">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CSP-13-bN2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="关注" image="tab_shopping" selectedImage="tab_shopping_click" id="oEO-mr-GDU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gcK-Ti-z8e">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5xg-hx-ZGw" kind="relationship" relationship="rootViewController" id="Inh-zQ-dwR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qqO-zK-ncN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="-86"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_shopping" width="22" height="22"/>
+        <image name="tab_shopping_click" width="22" height="22"/>
+    </resources>
+</document>
