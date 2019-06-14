@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol PageContentViewDelegate : class {
+    func pageContentViewDelegate(viewColler : PageContentView, proress : CGFloat, sourceIndex : Int, targetIndex : Int)
+}
+
 private let contentCellID = "ContentCellID"
 class PageContentView: UIView {
     
     private var childVcs : [UIViewController]
     private weak var parentViewController : UIViewController?
     private var scrollBegainOffsetX : CGFloat = 0
+    weak var delegate : PageContentViewDelegate?
+    private var isForbidScrollDelegate : Bool = false
     
     private lazy var collectionView : UICollectionView = {[weak self] in
      
@@ -83,6 +89,7 @@ extension PageContentView : UICollectionViewDataSource {
 //接口方法
 extension PageContentView {
     func setCurrentIndex(currentIndex : Int) {
+        isForbidScrollDelegate = true
         let contentOffsetX = CGFloat(currentIndex) * collectionView.frame.width
         collectionView.setContentOffset(CGPoint(x: contentOffsetX, y: 0), animated: false)
     }
@@ -90,22 +97,47 @@ extension PageContentView {
 
 extension PageContentView : UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isForbidScrollDelegate = false
         scrollBegainOffsetX = scrollView.contentOffset.x
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var proress : CGFloat = 0 //滑动比例
-        var scrollViewW = scrollView.bounds.width
-
-        proress = scrollBegainOffsetX / scrollViewW - floor(scrollBegainOffsetX / scrollViewW)
         
-        if scrollView.contentOffset.x > scrollBegainOffsetX {//左滑
-            print("------------")
-        }else{//右滑
-            print("+++++++++++++")
+        if isForbidScrollDelegate { return }
+        
+        var proress : CGFloat = 0 //滑动比例
+        var sourceIndex : Int = 0//原来的控件id
+        var targetIndex : Int = 0//新的控件id
+        let currentOfSetX : CGFloat = scrollView.contentOffset.x
+        let scrollView_W = scrollView.bounds.width
+        
+        if scrollView.contentOffset.x > scrollBegainOffsetX {
+         //左滑
+            proress = currentOfSetX / scrollView_W - floor(currentOfSetX/scrollView_W)
+            sourceIndex = Int(currentOfSetX / scrollView_W)
+            targetIndex = sourceIndex + 1
+           
+            if targetIndex >= childVcs.count {
+                targetIndex = childVcs.count - 1
+            }
+            //完全划过去,偏移量判断
+            if currentOfSetX - scrollBegainOffsetX == scrollView_W {
+                proress = 1
+                targetIndex = sourceIndex
+            }
+            
+        }else{
+           //右滑
+            proress = 1 - (currentOfSetX / scrollView_W - floor(currentOfSetX/scrollView_W))
+            targetIndex = Int(currentOfSetX / scrollView_W)
+            sourceIndex = targetIndex  + 1
+            if sourceIndex >= childVcs.count {
+                sourceIndex = childVcs.count - 1
+            }
         }
         
-        
+        //代理
+        delegate?.pageContentViewDelegate(viewColler: self, proress: proress, sourceIndex: sourceIndex, targetIndex: targetIndex)
         
     }
 }

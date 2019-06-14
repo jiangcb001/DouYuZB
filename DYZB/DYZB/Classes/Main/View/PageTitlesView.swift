@@ -8,6 +8,10 @@
 
 import UIKit
 
+//MARK:   定义颜色常量
+private let kNorColor : (CGFloat, CGFloat, CGFloat) = (85, 85, 85)
+private let kSeleColor : (CGFloat, CGFloat, CGFloat) = (255, 128, 0)
+
 protocol PageTitlesViewDelegate : class {
     func selecteTitleToContent(titleView : PageTitlesView, selectedIndex index : Int)
 }
@@ -114,6 +118,32 @@ extension PageTitlesView {
         
         //通知代理
         delegate?.selecteTitleToContent(titleView: self, selectedIndex: selectLabel.tag)
+        
+    }
+}
+
+//MARK:-接口方法
+extension PageTitlesView {
+    func setTitleWithProgress(progress : CGFloat, sourceIndex: Int, targetIndex: Int) {
+        let sourceLabel = labels[sourceIndex]
+        let targetLabel = labels[targetIndex]
+        
+        let moveTotal = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+        let moveX = moveTotal * progress
+        print(moveX)
+        scrollLine.frame.origin.x = moveX + sourceLabel.frame.origin.x
+        
+        //title 颜色变化
+        //获取变化范围
+        let colorDelta = (kSeleColor.0 - kNorColor.0, kSeleColor.1 -  kNorColor.1, kSeleColor.2 - kNorColor.2)
+        
+        //变化sourceLabel
+        sourceLabel.textColor = UIColor(r: kSeleColor.0 - colorDelta.0 * progress, g: kSeleColor.1 - colorDelta.1 * progress, b: kSeleColor.2 - colorDelta.2 * progress)
+        
+        //变化targertLabel
+        targetLabel.textColor =  UIColor(r: kNorColor.0 + colorDelta.0 * progress, g: kNorColor.1 + colorDelta.1 * progress, b: kNorColor.2 + colorDelta.2 * progress)
+        
+        oldLabelIndex = targetIndex
         
     }
 }
