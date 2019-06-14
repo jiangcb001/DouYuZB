@@ -24,6 +24,7 @@
 		40BC71FB2276E00B00F2418A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40BC71F92276E00B00F2418A /* LaunchScreen.storyboard */; };
 		40BC72062276E00B00F2418A /* DYZBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC72052276E00B00F2418A /* DYZBTests.swift */; };
 		40BC72112276E00B00F2418A /* DYZBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC72102276E00B00F2418A /* DYZBUITests.swift */; };
+		40CB9B6E22B3A91B004909D6 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB9B6D22B3A91B004909D6 /* RecommendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		40BC720C2276E00B00F2418A /* DYZBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYZBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BC72102276E00B00F2418A /* DYZBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYZBUITests.swift; sourceTree = "<group>"; };
 		40BC72122276E00B00F2418A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40CB9B6D22B3A91B004909D6 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				408D426222AE28DA00A1DD43 /* Home.storyboard */,
 				408D426D22AE2B9900A1DD43 /* HomeViewController.swift */,
+				40CB9B6D22B3A91B004909D6 /* RecommendViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			files = (
 				408D427122AE3A9100A1DD43 /* UIBarButtonItem_Extension.swift in Sources */,
 				40BC71F12276E00900F2418A /* AppDelegate.swift in Sources */,
+				40CB9B6E22B3A91B004909D6 /* RecommendViewController.swift in Sources */,
 				408D427722AE640500A1DD43 /* common.swift in Sources */,
 				408D427B22AF71E200A1DD43 /* UIColor_Extension.swift in Sources */,
 				408D427922AF57CB00A1DD43 /* PageContentView.swift in Sources */,
